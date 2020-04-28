@@ -64,6 +64,17 @@
 				});
 			}
 		}
+		//사원정보 등록 처리
+		function emp_ins(){
+			//alert("저장 호출");
+			//화면에서 입력받은 값은 http프로토콜을 이용해서 서버쪽으로 전송되는데 이때 유니코드로 변환
+			//되어 전달됨.
+			//해결방법-server.xml문서에 포트번호 설정 위치(63번라인) URIEncoding="UTF-8"
+			//단 get방식에만 적용됨. post방식일때는 java코드를 활용하여 별도처리
+			$("#f_ins").attr("method","get");
+			$("#f_ins").attr("action",empInsert.jsp);
+			$("#f_ins").submit();
+		}
 	</script>
 </head>
 <body>
@@ -129,7 +140,7 @@
 			/* 우편번호 찾기 화면에 대한 초기화 */
 			$("#dlg_zipcode").dialog({
 				title:"우편번호 검색기"
-			   ,width:580
+			   ,width:650
 			   ,height: 550
 			   ,closed:true
 			});
@@ -217,7 +228,7 @@
 		});///////////////////////end of ready
 	</script>
 	<!--====================== 우편번호 찾기 시작 =======================-->
-	<div id="dlg_zipcode" style="width:100%; max-width:500px; padding:30px 30px;">
+	<div id="dlg_zipcode" style="width:100%; max-width:600px; padding:30px 30px;">
 		<input class="easyui-textbox" id="dong" name="dong" labelPosition="top" data-options="prompt:'동이름이나 주소 정보 입력...'" style="width:210px;">
 		<a id="btn_search" class="easyui-linkbutton" href="javascript:zipcode_search();" data-options="iconCls:'icon-search'">찾기</a>
 		<div style="margin-bottom:10px;"></div>
@@ -225,7 +236,7 @@
 	</div>
 	<!--====================== 우편번호 찾기  끝   =======================-->
 	<!--====================== 사원등록 시작 =======================-->
-	<div id="dlg_ins" data-options="closed:true, title:'사원정보 등록', modal:'true'" class="easyui-dialog" style="width:100%;max-width:480px;padding:30px 60px">
+	<div id="dlg_ins" data-options="closed:true, title:'사원정보 등록',footer:'#d_ins', modal:'true'" class="easyui-dialog" style="width:100%;max-width:600px;padding:30px 60px">
 		<form id="f_ins">
 			<div style="margin-bottom:10px">
 			<input class="easyui-numberbox" id="empno" name="empno" label="사원번호" data-options="prompt:'Enter a EmpNO'" style="width:150px">
@@ -237,7 +248,7 @@
 			<input class="easyui-textbox" id="job" name="job" label="JOB" data-options="prompt:'Enter a JOB'" style="width:250px">
 			</div>
 			<div style="margin-bottom:10px">
-			<input class="easyui-textbox" id="hiredate" name="hiredate" label="JOB" data-options="prompt:'Enter a 입사일자'" style="width:250px">
+			<input class="easyui-textbox" id="hiredate" name="hiredate" label="입사일자" data-options="prompt:'Enter a 입사일자'" style="width:250px">
 			</div>
 			<div style="margin-bottom:10px">
 			<input class="easyui-numberbox" id="sal" name="sal" label="급여" data-options="prompt:'Enter a 급여'" style="width:250px">
@@ -246,16 +257,27 @@
 			<input class="easyui-numberbox" id="comm" name="comm" label="인센티브"  data-options="prompt:'Enter a 인센티브'" style="width:250px">
 			</div>			
 			<div style="margin-bottom:10px">
-			<input class="easyui-combobox" id="deptno" name="deptno" label="부서번호"  data-options="prompt:'Enter a 인센티브'" style="width:250px">
+			<input class="easyui-combobox" id="deptno" name="deptno" label="부서번호" style="width:250px"
+			 data-options="prompt:'Enter a 부서번호'
+			             ,valueField: 'DEPTNO'
+                         ,textField: 'DNAME'
+                         ,url: './jsonDeptList.jsp'
+                         ,onSelect: function(rec){
+        				  }" 
+			>
 			</div>			
 			<div style="margin-bottom:10px">
-			<input class="easyui-textbox" id="zipcode" name="zipcode" label="우편번호"  data-options="prompt:'Enter a ZIPCODE'" style="width:100px">
+			<input class="easyui-textbox" id="zipcode" name="zipcode" label="우편번호"  data-options="prompt:'Enter a ZIPCODE'" style="width:160px">
 			<a id="btn_zipcode" href="#" class="easyui-linkbutton">우편번호찾기</a>
 			</div>
 			<div style="margin-bottom:10px">
-			<input class="easyui-textbox" id="mem_addr" name="mem_addr" label="주소"  data-options="prompt:'Enter a ADDRESS'" style="width:400px">
+			<input class="easyui-textbox" id="mem_addr" name="mem_addr" label="주소"  data-options="prompt:'Enter a ADDRESS'" style="width:420px">
 			</div>
 		</form>
+		<div id="d_ins" style="margin-bottom:10px">
+			<a id="btn_save" href="javascript:emp_ins()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">저장</a> 
+			<a id="btn_close" href="javascript:$('#dlg_ins').dialog('close')" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">닫기</a> 
+		</div>
 	</div>
 	</script>
 	<!--====================== 사원등록   끝  =======================-->

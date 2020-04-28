@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="orm.mybatis.mapper.commonMapper">
 	<select id="zipcodeList" parameterType="map" resultType="map">
-		SELECT address FROM zipcode_t
+		SELECT zipcode, address FROM zipcode_t
 <!-- 동적쿼리문을 지원함. -->		
 		<where>
 			<if test="dong!=null">
