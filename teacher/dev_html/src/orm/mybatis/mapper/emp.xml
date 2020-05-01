@@ -8,7 +8,8 @@
 		  from emp 
   		<if test="empno > 0">     
 		 where empno = #{empno} 
-  		</if> 		  
+  		</if> 	
+  		ORDER BY empno desc	  
 	</select>
 	<!--
 	<select id="empList2" parameterType="int" resultType="java.util.Map"> 

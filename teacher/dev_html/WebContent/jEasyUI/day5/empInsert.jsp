@@ -40,8 +40,30 @@
 	pMap.put("comm",comm);
 	pMap.put("deptno",deptno);
 	result = eDao.empINS(pMap);
-	response.sendRedirect("EmpManagerVer6.jsp");//페이지 이동-
+	//out.print("result: "+result);
+	//response.sendRedirect("EmpManagerVer6.jsp");//페이지 이동-
+	if(result == 1){//등록 성공했을 때
+		response.sendRedirect("EmpManagerVer7.jsp");//페이지 열리전 db경유함.
+	}
+	//등록 실패 했을 때
+	else{
+		response.sendRedirect("empInsertFail.jsp");//페이지 열리전 db경유함.		
+	}
 %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

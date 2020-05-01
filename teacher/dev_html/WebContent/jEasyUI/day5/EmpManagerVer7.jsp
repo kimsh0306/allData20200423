@@ -13,6 +13,10 @@
 			//insert here
 			$("#dlg_ins").dialog('open');
 		}
+		function empUPD(){
+			//insert here
+			$("#dlg_upd").dialog('open');
+		}
 		function empnoSearch(){
 			//alert("empnoSearch 호출");
 			var s_empno = $("#s_empno").val();
@@ -74,6 +78,13 @@
 			$("#f_ins").attr("method","get");
 			$("#f_ins").attr("action","empInsert.jsp");
 			$("#f_ins").submit();
+		}
+		//사원정보 수정 처리
+		function emp_upd(){
+			//alert("수정 저장 호출");
+			$("#f_upd").attr("method","get");
+			$("#f_upd").attr("action","empUpdate.jsp");
+			$("#f_upd").submit();
 		}
 	</script>
 </head>
@@ -167,9 +178,9 @@
 			});
 			$('#dg_emp').datagrid({
 				toolbar:'#tbar_emp'
+			   ,singleSelect:true
 			   ,width: '1100px'
 			   ,title:'사원관리 - 자바스크립트 만으로 구성하기'
-			   ,url:'jsonEmpList.jsp'
 			   ,columns:[[
 			        {field:'CK', checkbox:true ,width:50,align:'center'}
 			       ,{field:'EMPNO',title:'사원번호',width:90,align:'center', editor:'numberbox'}
@@ -223,7 +234,10 @@
 	        onCancelEdit:function(index,row){
 	            row.editing = false;
 	            $(this).datagrid('refreshRow', index);
-	        }					  
+	        }	
+	        ,onClickRow:function(index,row){
+	        	alert("선택했네 ==> "+index+", "+row.EMPNO);
+	        }
 			});///////////////////end of datagrid			
 		});///////////////////////end of ready
 	</script>
@@ -282,9 +296,48 @@
 	</script>
 	<!--====================== 사원등록   끝  =======================-->
 	<!--====================== 사원수정 시작 =======================-->
-	<div id="dlg_upd" class="easyui-dialog" style="width:100%;max-width:480px;padding:30px 60px">
+<div id="dlg_upd" data-options="closed:true, title:'사원정보 수정',footer:'#d_upd', modal:'true'" class="easyui-dialog" style="width:100%;max-width:600px;padding:30px 60px">
 		<form id="f_upd">
-		수정
+			<div style="margin-bottom:10px">
+			<input class="easyui-numberbox" id="empno" name="empno" label="사원번호" data-options="prompt:'Enter a EmpNO'" style="width:150px">
+			</div>
+			<div style="margin-bottom:10px">
+			<input class="easyui-textbox" id="ename" name="ename" label="사원명" data-options="prompt:'Enter a ENAME'" style="width:250px">
+			</div>
+			<div style="margin-bottom:10px">
+			<input class="easyui-textbox" id="job" name="job" label="JOB" data-options="prompt:'Enter a JOB'" style="width:250px">
+			</div>
+			<div style="margin-bottom:10px">
+			<input class="easyui-textbox" id="hiredate" name="hiredate" label="입사일자" data-options="prompt:'Enter a 입사일자'" style="width:250px">
+			</div>
+			<div style="margin-bottom:10px">
+			<input class="easyui-numberbox" id="sal" name="sal" label="급여" data-options="prompt:'Enter a 급여'" style="width:250px">
+			</div>			
+			<div style="margin-bottom:10px">
+			<input class="easyui-numberbox" id="comm" name="comm" label="인센티브"  data-options="prompt:'Enter a 인센티브'" style="width:250px">
+			</div>			
+			<div style="margin-bottom:10px">
+			<input class="easyui-combobox" id="deptno" name="deptno" label="부서번호" style="width:250px"
+			 data-options="prompt:'Enter a 부서번호'
+			             ,valueField: 'DEPTNO'
+                         ,textField: 'DNAME'
+                         ,url: './jsonDeptList.jsp'
+                         ,onSelect: function(rec){
+        				  }" 
+			>
+			</div>			
+			<div style="margin-bottom:10px">
+			<input class="easyui-textbox" id="zipcode" name="zipcode" label="우편번호"  data-options="prompt:'Enter a ZIPCODE'" style="width:160px">
+			<a id="btn_zipcode" href="#" class="easyui-linkbutton">우편번호찾기</a>
+			</div>
+			<div style="margin-bottom:10px">
+			<input class="easyui-textbox" id="mem_addr" name="mem_addr" label="주소"  data-options="prompt:'Enter a ADDRESS'" style="width:420px">
+			</div>
+		</form>
+		<div id="d_upd" style="margin-bottom:10px">
+			<a id="btn_save" href="javascript:emp_upd()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">저장</a> 
+			<a id="btn_close" href="javascript:$('#dlg_upd').dialog('close')" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">닫기</a> 
+		</div>
 		</form>
 	</div>	
 	<!--====================== 사원수정   끝  =======================-->
