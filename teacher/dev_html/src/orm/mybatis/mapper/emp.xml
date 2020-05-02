@@ -65,7 +65,7 @@
 		delete from emp
 		 where empno=#{empno}<!-- Map<String,Object> map.put("empno",7566); -->
 	</delete>
-	<delete id="empDelete" parameterType="map">
+	<delete id="empDelete" parameterType="list">
 		delete from emp
     	 WHERE empno in     
     	 <foreach item="item" index="index" collection="list"

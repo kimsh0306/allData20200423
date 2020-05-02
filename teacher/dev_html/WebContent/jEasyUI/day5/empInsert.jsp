@@ -43,7 +43,7 @@
 	//out.print("result: "+result);
 	//response.sendRedirect("EmpManagerVer6.jsp");//페이지 이동-
 	if(result == 1){//등록 성공했을 때
-		response.sendRedirect("EmpManagerVer7.jsp");//페이지 열리전 db경유함.
+		response.sendRedirect("EmpManagerVer8.jsp?mode=update");//페이지 열리전 db경유함.
 	}
 	//등록 실패 했을 때
 	else{
