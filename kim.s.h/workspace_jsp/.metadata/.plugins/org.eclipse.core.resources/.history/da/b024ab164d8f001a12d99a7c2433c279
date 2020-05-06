@@ -1,0 +1,23 @@
+package jsp.ch17;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FrontServlet extends HttpServlet{
+	public void doService(HttpServletRequest req
+			,HttpServletResponse res) throws ServletException, IOException
+	{
+		//url pattern의 이름이 
+		String mode = req.getParameter("mode");
+	}
+	public void doGet(HttpServletRequest req
+					 ,HttpServletResponse res) throws ServletException, IOException
+	{
+		doService(req,res);
+	}
+	
+}

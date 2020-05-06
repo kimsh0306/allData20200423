@@ -1,0 +1,31 @@
+package jsp.ch17;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sun.istack.internal.logging.Logger;
+
+@WebServlet(urlPatterns="/ch17/order.do")
+public class OrderServlet extends HttpServlet{
+	Logger logger = Logger.getLogger(OrderServlet.class);
+
+	@Override
+	public void doGet(HttpServletRequest req
+					 ,HttpServletResponse res) throws ServletException, IOException
+	{
+		logger.info("doGet 호출 성공");
+	}
+	@Override
+	public void doPost(HttpServletRequest req
+			,HttpServletResponse res) throws ServletException, IOException
+	{
+		logger.info("doPost 호출 성공");
+	}
+	
+	
+}

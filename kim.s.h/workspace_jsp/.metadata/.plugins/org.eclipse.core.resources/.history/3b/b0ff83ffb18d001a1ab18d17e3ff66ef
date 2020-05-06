@@ -1,0 +1,16 @@
+package jsp.ch13;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+
+public class HelloServlet extends HttpServlet {
+//서블릿 페이지를 추가로 지정해 줄 수 있다.
+	
+	@Override
+	public void doGet(HttpServletReponse req, HttpServletsponse res) throws IOException, ServletException
+	{
+		
+	}
+}
