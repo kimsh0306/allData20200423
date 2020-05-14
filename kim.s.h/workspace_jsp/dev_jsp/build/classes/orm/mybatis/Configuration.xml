@@ -2,6 +2,11 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
 <configuration>
 
+	<properties resource="orm/dao/db.properties">
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</properties>
+
    <typeAliases>
       <typeAlias alias="empVO" type="com.vo.EmpVO"/>
    </typeAliases>
@@ -12,8 +17,8 @@
 			 <dataSource type="POOLED">
 				 <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
 				 <property name="url" value="jdbc:oracle:thin:@192.168.0.26:1521:orcl11"/>
-				 <property name="username" value="scott"/>
-				 <property name="password" value="tiger"/>
+				 <property name="username" value="${username}"/>
+				 <property name="password" value="${password}"/>
 			 </dataSource>
 		 </environment>
 	 </environments>
@@ -24,9 +29,6 @@ DML구문 즉 select, insert, update, delete문이 작성된 xml파일의 물리
 		 <mapper resource="orm/mybatis/mapper/emp.xml"/>
 		 <mapper resource="orm/mybatis/mapper/dept.xml"/>
 		 <mapper resource="orm/mybatis/mapper/book.xml"/>
-		 <mapper resource="orm/mybatis/mapper/dept.xml"/>
 		 <mapper resource="orm/mybatis/mapper/Common.xml"/>
-		 <mapper resource="orm/mybatis/mapper/empSH.xml"/>
-		 <mapper resource="orm/mybatis/mapper/deptSH.xml"/>
 	 </mappers>
 </configuration>

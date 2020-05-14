@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>
 		<param-value>/WEB-INF/classes/log4.properties</param-value>
@@ -13,6 +14,49 @@
 		<param-value>scott</param-value>
 	</context-param>
 	
+	<servlet>
+		<servlet-name>deptMgr</servlet-name>
+		<servlet-class>jsp.dept.DeptController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deptMgr</servlet-name>
+	<!-- 이 부분은 어떻게 정하는가? /dept/ => 출발점이 어디서부터인지, jsp를 기준으로  -->
+		<url-pattern>/dept/deptList.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 
+	error-page는 고객들에게 서비스할 때 사용하고 
+	공부할 때는 사용하지 않도록 한다. 
+	-->
+	
+	<!--  
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error500.jsp</location>
+	</error-page>
+	-->
+	
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error/errorNullPointer.jsp</location>
+	</error-page>
+	
+	
+	<!--======================================================================  -->
+	<servlet>
+		<servlet-name>ParameterServlet</servlet-name>
+		<servlet-class>jsp.ch03.ParameterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ParameterServlet</servlet-name>
+		<url-pattern>/chap03/parameterAction.do</url-pattern>
+	</servlet-mapping>
+	
 	<!--======================================================================  -->	
 	<servlet>
 		<servlet-name>boardAction</servlet-name>
@@ -21,6 +65,8 @@
 			<param-name>mem_id</param-name>
 			<param-value>apple</param-value>
 		</init-param>
+		
+		<!-- 서블릿의 지배를 받고 있어서 boardAction 안에서 초기화가 되는 것이다. -->
 		<init-param>
 			<param-name>mem_pw</param-name>
 			<param-value>123</param-value>

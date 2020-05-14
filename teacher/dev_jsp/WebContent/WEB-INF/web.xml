@@ -13,6 +13,14 @@
 		<param-value>scott</param-value>
 	</context-param>
 	<servlet>
+		<servlet-name>deptMgr</servlet-name>	
+		<servlet-class>jsp.dept.DeptController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deptMgr</servlet-name>
+		<url-pattern>/dept/deptList.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>boardAction</servlet-name>
 		<servlet-class>ajax.BoardAction</servlet-class>
 		<init-param>
@@ -53,6 +61,14 @@
 		<url-pattern>/ch13/hello.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>parameterServlet</servlet-name>
+		<servlet-class>jsp.ch03.ParameterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>parameterServlet</servlet-name>
+		<url-pattern>/ch03/parameterAction.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>orderServlet</servlet-name>
 		<servlet-class>jsp.ch17.OrderServlet</servlet-class>
 	</servlet>
@@ -85,6 +101,21 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<!-- 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error500.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error/errorNullPointer.jsp</location>
+	</error-page>	
+	 -->
+	
 	<!-- 
 	<servlet>
 		<servlet-name>orderDelServlet</servlet-name>

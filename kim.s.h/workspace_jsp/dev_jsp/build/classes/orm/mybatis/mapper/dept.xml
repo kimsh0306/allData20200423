@@ -7,7 +7,12 @@
 		  from dual
 	</select>
 	<select id="deptList" parameterType="map" resultType="map">
-		select deptno, dname from dept
+		select deptno, dname, loc 
+		from dept
+		<if test="u_no.length>0">
+			<where>
+				AND deptno = #{u_no}
+			</where>
+		</if>
 	</select>
-	
 </mapper>
