@@ -10,9 +10,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 //네이버 캡차 API 예제 - 캡차 이미지 수신
-public class ApiExamCaptchaImage {
- public 	ApiExamCaptchaImage(String key) {
-	 
+public class ApiExamCaptchaImageVer2 {
+ public 	ApiExamCaptchaImageVer2(String key) {
+	 	System.out.println("ApiExamCaptchaImageVer2 key : "+key);
+		key = key.substring(8, 24);
+	 	String clientId = "5NNeHasY7KCWoMGm0suJ"; //애플리케이션 클라이언트 아이디값";
+		String clientSecret = "4zvlywLkoc"; //애플리케이션 클라이언트 시크릿값";
+		String apiURL = "https://openapi.naver.com/v1/captcha/ncaptcha.bin?key=" + key;
+	     Map<String, String> requestHeaders = new HashMap<>();
+	     requestHeaders.put("X-Naver-Client-Id", clientId);
+	     requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+	     String responseBody = get(apiURL,requestHeaders);
+	     System.out.println("==========[Image]==========");
+	     System.out.println(responseBody);	 
  }
  public static void main(String[] args) {
 	 if(args.length!=1) {

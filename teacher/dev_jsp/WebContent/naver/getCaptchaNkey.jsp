@@ -11,7 +11,7 @@
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("X-Naver-Client-Id", clientId);
-        con.setRequestProperty("X-Naver-Client-Secret", clientSecret);        
+        con.setRequestProperty("X-Nave0r-Client-Secret", clientSecret);        
 		int responseCode = con.getResponseCode();
 		BufferedReader br = null;
 		if(responseCode == 200){
@@ -27,7 +27,7 @@
 		}
 		//사용한 자원 반납하기
 		br.close();
-		out.println(sb_line.toString());
+		out.println(sb_line.toString());//{"key":""}
 	}catch(Exception e){
 		out.print(e.toString());
 	}

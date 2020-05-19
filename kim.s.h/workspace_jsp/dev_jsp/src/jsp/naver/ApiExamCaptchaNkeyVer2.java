@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApiExamCaptchaNkey {
+public class ApiExamCaptchaNkeyVer2 {
 //ID - 5NNeHasY7KCWoMGm0suJ
 //SECRET - 4zvlywLkoc
 	   public static void main(String[] args) {
@@ -26,6 +26,8 @@ public class ApiExamCaptchaNkey {
 	        String responseBody = get(apiURL, requestHeaders);
 
 	        System.out.println(responseBody);
+	        ApiExamCaptchaImageVer2 acv2 = 
+	        		new ApiExamCaptchaImageVer2(responseBody);
 	    }
 /*
  * 가장 먼저 호출되는 메소드
