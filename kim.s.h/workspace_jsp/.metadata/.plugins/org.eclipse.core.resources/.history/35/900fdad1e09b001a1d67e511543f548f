@@ -1,0 +1,5 @@
+package com_mvc2;
+
+public interface Controller {
+
+}

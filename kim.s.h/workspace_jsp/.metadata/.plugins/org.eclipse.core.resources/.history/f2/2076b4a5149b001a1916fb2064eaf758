@@ -1,0 +1,12 @@
+package jsp.pool;
+import javax.naming.*;
+
+public class MyPool {
+	public static void main(String[] args) {
+		try {
+			InitalContext
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

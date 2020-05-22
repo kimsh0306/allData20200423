@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String clientId = "fzKnHTaXVyoY7OjvxISh"; //애플리케이션 클라이언트 아이디값";
+	String clientSecret = "VwrOns36ly"; //애플리케이션 클라이언트 시크릿값";	
+	String key = null;
+	try{
+		String code="0";//키 발급 시 0, 캡차이미지 비교시 1로 셋팅
+		String apiURL = "https://openapi.naver.com/v1/captcha/nkey?code=" + code;
+
+        Map<String, String> requestHeaders = new HashMap<>();
+        requestHeaders.put("X-Naver-Client-Id", clientId);
+        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+        String responseBody = get(apiURL, requestHeaders);
+
+        System.out.println(responseBody);
+	}catch(Exception e){
+		
+	}
+%>

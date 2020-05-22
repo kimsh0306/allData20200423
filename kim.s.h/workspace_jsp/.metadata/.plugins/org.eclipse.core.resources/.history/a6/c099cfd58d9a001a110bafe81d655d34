@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	Cookie[] cookies = request.getCookies();
+	String c_name = null;
+	if(cookies!=null&&cookies.length>0){
+		for(int i=0;i<cookies.length;i++){
+			if("c_name".equals(cookies[i].getName())){
+				c_name = cookies[i].getValue();
+			}
+		}
+	}
+	out.print("쿠키에서 읽어온 값: "+c_name);
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쿠키값 읽기</title>
+
+<!-- 
+로그아웃일 때
+loginServlet.do뒤에 넘길 값 ?menu=logout으로 정해주었기 때문에 
+servlet에서 
+menu = req.getParameter("memu");
+이렇게 getParameter하면 "logout"문자열이 넘어간다.
+-->
+
+<script type="text/javascript">
+	function logout(){
+		//menu=logout
+		location.href="../loginServlet.do?menu=logout";
+	}
+	function login(){
+		location.href="loginForm.jsp";
+	}
+</script>
+</head>
+<body>
+<%
+//저장한 쿠키 c_name이 null이면 == 저장된 쿠키가 없다면, 로그인 버튼만 보이고
+//정장한 쿠키 c_nmae에 값이 있다면 == 저정된 쿠키가 있다면, 로그아웃 버튼만 보인다.
+
+	if(c_name==null){
+%>
+<input type="button" value="로그인" onClick="login()">
+<%
+	}else if(c_name!=null&&c_name.length()>0){
+%>
+<input type="button" value="로그아웃" onClick="logout()">
+<%
+	}
+%>
+</body>
+</html>

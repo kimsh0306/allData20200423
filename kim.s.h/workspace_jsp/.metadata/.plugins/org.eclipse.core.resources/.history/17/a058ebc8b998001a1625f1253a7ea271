@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function getCapchaKey(){
+		
+	}
+</script>
+</head>
+<body>
+<img id="captchaIMG" width="200px" height="90px">
+<button onClick="getCapchaKey()">새로고침</button>
+</body>
+</html>

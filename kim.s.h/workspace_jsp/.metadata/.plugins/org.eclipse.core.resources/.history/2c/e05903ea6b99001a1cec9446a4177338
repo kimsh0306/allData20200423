@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String daps[] = {"1","1","2","3"};
+	String htest1 = request.getParameter("htest1");
+	String htest2 = request.getParameter("htest2");
+	String htest3 = request.getParameter("htest3");
+	String htest4 = request.getParameter("htest4");
+%>

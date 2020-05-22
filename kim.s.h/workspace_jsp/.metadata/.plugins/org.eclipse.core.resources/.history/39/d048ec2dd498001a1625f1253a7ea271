@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<%@ include file="../common/jEasyUICommon.jsp" %>
+<script type="text/javascript">
+	var g_key;
+	//아래에서 키값이 결정된다.
+	function getCaptchaKey(){
+		$.ajax({
+			 method:"get"
+			,url:"getCaptchaImage.jsp"
+			,success:function(result){
+				//alert("result:"+result);
+				var imsi = result.split("?");
+				var key = imsi[1];
+				g_key = key.subString(4,20);
+				alert("g_key:"+g_key);
+				
+			}
+		});
+	}
+	//getCaptchaKey함수에서 결정된 키가 여기서 필요함. 그렇다면 전역인가|지변인가
+	function captchaAccount(){
+		
+	}
+</script>
+</head>
+<body>
+<img id="captchaIMG" width="200px" height="90px">
+<button onClick="getCaptchaKey()">새로고침</button>
+<hr>
+<input type="text" name="user" id="user">
+<button onClick="captchaAccount()">판정</button>
+</body>
+</html>

@@ -1,0 +1,16 @@
+package jsp.pool;
+import javax.naming.*;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
+
+public class MyPool {
+	public static void main(String[] args) {
+		try {
+			InitalContext ctx = new InitalContext();
+			DataSource ds = (DataSource)ctx.lookup("")
+			System.out.println(ds);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

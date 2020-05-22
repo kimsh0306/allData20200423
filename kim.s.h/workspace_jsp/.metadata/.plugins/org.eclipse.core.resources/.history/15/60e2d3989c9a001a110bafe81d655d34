@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function c_make(){
+		
+	}
+	function c_delete(){
+		
+	}
+</script>
+</head>
+<body>
+<form id="f_coo" action="cookieMake.jsp">
+	<input type="text" value="쿠키 이름">
+	<input type="text" value="쿠키 값">
+	<button onClick="c_make()">쿠키만들기</button>
+	<button onClick="c_delete()">쿠키지우기</button> 
+</form>
+</body>
+</html>

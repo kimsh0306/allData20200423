@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String s_name = (String)session.getAttribute("s_name");
+	out.print("세션에서 가져온 값"+s_name);//null
+	//로그인 하지 않았을 때
+	if(s_name==null){
+%>
+	<script type="text/javascript">
+	<!--
+		alert("로그인을 하셔야 합니다.");
+	-->
+	</script>
+<% 
+	}
+%>

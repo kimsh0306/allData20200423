@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function for_table(){
+		for(var i=0;i<3;i++){
+			<tr><td></td></tr>
+		}
+		document.getElementById("tb").innerHTML = ???;
+	}
+</script>
+
+</head>
+<body>
+	<div id="tb">
+	테이블자리
+	</div>
+	<button onclick="for_table()">테이블생성</button>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+//세션 객체를 가져오는 방법에 두 가지가 있다.
+
+// 	저장된 세션을 가져온다.
+// 	HttpSession d_session = request.getSession();
+// 	s_name 세션을 지운다.
+// 	d_session.removeAttribute("s_name");
+
+	//페이지 디렉티브의 session 속성이 true이기 때문에 session객체가 이미 생성돼 있다고 생각해야 한다.
+	//그래서 session객체 생성 없이 바로 사용할 수 있다. 233p
+	session.removeAttribute("s_name");
+	out.print(session.getId());
+%>

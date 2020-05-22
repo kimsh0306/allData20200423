@@ -1,0 +1,15 @@
+package jsp.ch09;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class loginServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+		String mem_id = req.getParameter("mem_id");
+		String mem_pw = req.getParameter("mem_pw");
+		Cookie c_name = new Cookie("c_name", "김유신");
+	}
+	
+}

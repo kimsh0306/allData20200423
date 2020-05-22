@@ -1,0 +1,22 @@
+<%@page import="javax.activation.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	try {
+		InitialContext ctx = new InitialContext();
+		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/dbPool");
+		System.out.println(ds);
+	}catch (Exception e) {
+		// TODO: handle exception
+	}
+%>
+</body>
+</html>

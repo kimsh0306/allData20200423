@@ -1,0 +1,7 @@
+package com_mvc2;
+
+import javax.servlet.http.HttpServlet;
+
+public class FrontMVC2 extends HttpServlet {
+
+}

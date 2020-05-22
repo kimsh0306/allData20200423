@@ -1,0 +1,29 @@
+package com_mvc2;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+public class FrontMVC2 extends HttpServlet {
+	Logger logger = Logger.getLogger(MemberController.class);
+	public void doService(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		logger.info("doGet 호출 성공");
+		String requestURI = req.getRequestURI();
+		String contextPath = req.getContextPath();
+		String command = requestURI.substring(contextPath.length()+1);
+		Controller controller = null;
+	}
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		logger.info("doGet 호출 성공");
+		doService(req,res);
+	}
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		logger.info("doPost 호출 성공");
+		doService(req,res);
+	}
+}
