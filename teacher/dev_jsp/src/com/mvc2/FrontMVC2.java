@@ -27,11 +27,12 @@ public class FrontMVC2 extends HttpServlet {
 		String requestURI = req.getRequestURI();
 		logger.info("requestURI : "+requestURI);
 		//  ==> dev_jsp
-		String contextPath = req.getContextPath();
+		String contextPath = req.getContextPath(); 
 		logger.info("contextPath : "+contextPath);
 		// ==> /member/memberList.mvc2	
 		String command = 
 				requestURI.substring(contextPath.length()+1);
+		// ==> member/memberList.mvc2	
 		
 		Controller controller = null;
 		logger.info("command : "+command);

@@ -1,5 +1,6 @@
-package com.mvc2;
+package com.mvc3;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,21 +15,33 @@ import org.apache.log4j.Logger;
 
 import com.mvc3.ModelAndView;
 
-public class MemberController implements Controller {
-	Logger logger = Logger.getLogger(MemberController.class);
+public class MemberController3 implements Controller2020 {
+	Logger logger = Logger.getLogger(MemberController3.class);
 	String crud = null;
-	MemberLogic memLogic = null;
-	public MemberController(String crud) {
+	MemberLogic3 memLogic = null;
+	public MemberController3(String crud) {
 		this.crud = crud;
-		memLogic = new MemberLogic();
-	}
-	public ModelAndView process(String work,HttpServletRequest req, HttpServletResponse res) throws ServletException {
-	
-			return new ModelAndView();
+		memLogic = new MemberLogic3();
 	}
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException {
-		logger.info("process 호출 성공, crud:"+crud);
+	public ModelAndView process(String requestName,HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
+		logger.info("process[ModelAndView] 호출 성공, requestName:"+requestName);
+		ModelAndView mav = new ModelAndView(req,res);
+		mav.setViewName(requestName);
+		if("member/memberList".equals(requestName)) {
+			//res.sendRedirect(req.getContextPath()+"/"+requestName+".jsp");		
+			mav.setViewName("/member/memberList3.jsp");
+			//return null;
+		}
+		else if("zipcodeList".equals(requestName)) {
+			return null;
+		}
+		
+		return mav;
+	}
+	@Override
+	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException  {
+		logger.info("process[String] 호출 성공, crud:"+crud);
 		String path = "";
 		if("login".equals(crud)){
 			String u_id = req.getParameter("mem_id");

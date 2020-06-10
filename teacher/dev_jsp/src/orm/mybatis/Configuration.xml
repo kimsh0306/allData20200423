@@ -23,6 +23,8 @@
 <!-- xml주석
 DML구문 즉 select, insert, update, delete이 작성된 xml파일의 물리적인 위치와 파일명을 등록하기
  -->	
+		<mapper resource="orm/mybatis/mapper/board.xml" />
+		<mapper resource="orm/mybatis/mapper/member.xml" />
 		<mapper resource="orm/mybatis/mapper/common.xml" />
 		<mapper resource="orm/mybatis/mapper/book.xml" />
 		<mapper resource="orm/mybatis/mapper/emp.xml" />
