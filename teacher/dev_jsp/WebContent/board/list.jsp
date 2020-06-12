@@ -26,7 +26,7 @@
 	}
 	function board_ins(){
 		alert("저장호출 성공");
-		$("#f_write").attr("method","get");
+		$("#f_write").attr("method","post");
 		$("#f_write").attr("action","./boardINS.mvc3");
 		$("#f_write").submit();
 	}
@@ -68,9 +68,22 @@
 			<tr>
 				<td><%=rmap.get("BM_NO") %></td>
 				<td>
+<!-- 너 댓글이니? -->
+<%
+	String imgPath = "\\board\\";
+	if(Integer.parseInt(rmap.get("BM_POS").toString())>0){
+		for(int j=0;j<Integer.parseInt(rmap.get("BM_POS").toString());j++){
+			out.print("&nbsp;&nbsp;");
+		}////end of for
+%>
+	<img src="<%=imgPath %>reply.gif" border="0">
+<%		
+	}///////end of if
+%>				
 				<a href="./boardDetail.mvc3?cud=DET&bm_no=<%=rmap.get("BM_NO") %>">
 				<%=rmap.get("BM_TITLE") %>
 				</a>
+				
 				</td>
 				<td><%=rmap.get("BM_WRITER") %></td>
 				<td><%=rmap.get("BS_FILE") %></td>

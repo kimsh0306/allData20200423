@@ -1,6 +1,8 @@
 package com.mvc3;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import org.apache.log4j.Logger;
 
 import com.mvc2.Controller;
 import com.mvc2.ControllerMapper;
+import com.util.HashMapBinder;
 
 public class ActionSupport extends HttpServlet {
 	Logger logger = Logger.getLogger(ActionSupport.class);
@@ -38,7 +41,10 @@ public class ActionSupport extends HttpServlet {
 		logger.info("aftter command : "+requestName); 
 		//insert here - 인스턴스화 and process call
 		String cud = req.getParameter("cud");
-		logger.info("cud: "+cud);
+		Map<String,Object> cudMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.multiBind(cudMap);
+		logger.info("cud: "+cudMap.get("cud"));
 		try {
 			controller = 
 					ControllerMapper3.getController(requestName);
@@ -51,7 +57,7 @@ public class ActionSupport extends HttpServlet {
 				//Object에 오는 타입이 두 가지 이다. 
 				//하나는 ModelAndView 나머지 하나는 String
 				Object robj = null;
-				if(cud==null) {
+				if(cudMap.get("cud")==null) {
 					logger.info("cud가 null일때 로 처리");
 					robj = controller.process(requestName, req, res);
 				}
@@ -100,7 +106,7 @@ public class ActionSupport extends HttpServlet {
 		logger.info("doGet 호출 성공");
 		doService(req,res);
 	}
-	public void Post(HttpServletRequest req
+	public void doPost(HttpServletRequest req
 			, HttpServletResponse res)
 					throws ServletException, IOException
 	{
