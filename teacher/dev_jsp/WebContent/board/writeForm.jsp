@@ -47,7 +47,11 @@
 	    	<tr>
 	    	<td>비밀번호</td>
 	    	<td><input id="bm_pw"  name="bm_pw" class="easyui-passwordbox"></td>
-	    	</tr>	    	
+	    	</tr>	 
+	    	<tr>
+	    	<td>첨부파일</td>
+	    	<td><input id="bs_file"  name="bs_file" class="easyui-filebox"></td>
+	    	</tr>   	
 	   </table>		
 		<div id="d_ins" style="margin-bottom:10px">
 			<a id="btn_save" href="javascript:board_ins()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">저장</a> 

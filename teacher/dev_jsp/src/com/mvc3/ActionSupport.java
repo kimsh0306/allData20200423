@@ -41,10 +41,7 @@ public class ActionSupport extends HttpServlet {
 		logger.info("aftter command : "+requestName); 
 		//insert here - 인스턴스화 and process call
 		String cud = req.getParameter("cud");
-		Map<String,Object> cudMap = new HashMap<>();
-		HashMapBinder hmb = new HashMapBinder(req);
-		hmb.multiBind(cudMap);
-		logger.info("cud: "+cudMap.get("cud"));
+		logger.info("cud: "+cud);
 		try {
 			controller = 
 					ControllerMapper3.getController(requestName);
@@ -57,7 +54,7 @@ public class ActionSupport extends HttpServlet {
 				//Object에 오는 타입이 두 가지 이다. 
 				//하나는 ModelAndView 나머지 하나는 String
 				Object robj = null;
-				if(cudMap.get("cud")==null) {
+				if(cud==null) {
 					logger.info("cud가 null일때 로 처리");
 					robj = controller.process(requestName, req, res);
 				}

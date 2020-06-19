@@ -34,11 +34,11 @@ public class HashMapBinder {
 	public void multiBind(Map<String,Object> pMap) {
 		pMap.clear();
 		try {
-			multi = new MultipartRequest(req, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+				multi = new MultipartRequest(req, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+				logger.info("multi : "+multi);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		logger.info("multi : "+multi);
 		Enumeration<String> en = multi.getParameterNames();
 		//자료구조안에 데이터가 있나요?
 		while(en.hasMoreElements()) {

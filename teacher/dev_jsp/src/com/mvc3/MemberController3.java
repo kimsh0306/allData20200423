@@ -76,6 +76,12 @@ public class MemberController3 implements Controller2020 {
 		}
 		return path;
 	}
+	@Override
+	public String process(Map<String, Object> cudMap, HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 
